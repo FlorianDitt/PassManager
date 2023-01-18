@@ -10,7 +10,6 @@ class LoginActivity : AppCompatActivity() {
     private var checkUsername: Array<String> = arrayOf()//Array for every username
     private var checkPassword: Array<String> = arrayOf()//Array for every password
     private var iD: Array<String> = arrayOf()//Array for every user ID
-    var pID : Int = 0//Public User ID
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +24,12 @@ class LoginActivity : AppCompatActivity() {
             getUserinfo()
 
            for (i in 1 until checkUsername.size){
-               pID++
                if (passwordInput.text.toString() == checkPassword.elementAt(i) && usernameInput.text.toString() == checkUsername.elementAt(i)){//check username and password
-                   println(iD.elementAt(i).toInt())
                    val intent = Intent(this,MainActivity::class.java)
                    intent.putExtra("UserID", iD.elementAt(i).toString())
                    startActivity(intent)//change Activity
+                   usernameInput.setText("")
+                   passwordInput.setText("")
                }
            }
 
@@ -43,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
         val db = DBHelper(this, null)//Connection to Database
 
-        val res= db.getData(db.table1Name)//get data from Database
+        val res = db.getData(db.table1Name)//get data from Database
 
         while(res!!.moveToNext()) {//Store data from Database
             val id = res.getString(0)

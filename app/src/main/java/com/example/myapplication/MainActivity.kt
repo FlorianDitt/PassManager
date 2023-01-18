@@ -1,6 +1,9 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
+import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
@@ -9,52 +12,59 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private var websitearr : Array<String> = arrayOf()//Array of all Websites in the table
-    private var usernamearr : Array<String> = arrayOf()//Array of all Usernames in the Table
-    private var passwordarr : Array<String> = arrayOf()//Array of Password in the Table
-    private val bundle :Bundle ? = intent.extras
-    private var userID:String = intent!!.getStringExtra("UserID").toString()
+    private var userID : String = ""//Get user id from LoginActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (bundle != null){
-            userID = bundle.getString("UserID").toString()
+        if (intent.extras != null){
+            userID = intent.getStringExtra("UserID").toString()
         }
 
+        val toAddButton : Button = findViewById(R.id.toAddButton)
 
-        getUserData()
+        toAddButton.setOnClickListener {
+            val intent = Intent(this,addPasswordActivity::class.java)//Declare target Activity
+            intent.putExtra("UserID", userID)//add userID to new Activity
+            startActivity(intent)//change to Activity to add Password
+        }
+
         createTable()
     }
 
     private fun createTable(){
-
-        val tableLayout : TableLayout = findViewById(R.id.Table)//Table layout
-
-        for (i in 1 until websitearr.size) {
-            val tblRow = TableRow(this)
-            val tv1 = TextView(this)
-            tv1.text = websitearr.elementAt(i)
-            val tv2 = TextView(this)
-            tv2.text = usernamearr.elementAt(i)
-            val tv3 = TextView(this)
-            tv3.text = passwordarr.elementAt(i)
-            tableLayout.addView(tblRow)
-        }
-    }
-
-    private fun getUserData(){
         val db = DBHelper(this, null)
-        println("Main: $userID.toInt")
-        val res = db.getSpecialData(LoginActivity().pID)//Get data from Database
+        println("Main: " + userID.toInt())
+        val res = db.getSpecialData(userID.toInt())//Get data from Database
 
         while(res!!.moveToNext()) {//Store data from Database
             val website = res.getString(2)
             val username = res.getString(3)
             val password = res.getString(4)
-            websitearr += website
-            usernamearr += username
-            passwordarr += password
+
+            val tableLayout : TableLayout = findViewById(R.id.Table)//Get Table layout
+            val tblRow = TableRow(this)
+
+            val tv1 = TextView(this)
+            tv1.text = website
+            tv1.gravity = Gravity.CENTER_HORIZONTAL
+            tv1.setPadding(15,15,15,15)
+            tblRow.addView(tv1)
+
+            val tv2 = TextView(this)
+            tv2.text = username
+            tv2.gravity = Gravity.CENTER_HORIZONTAL
+            tv2.setPadding(15,15,15,15)
+            tblRow.addView(tv2)
+
+            val tv3 = TextView(this)
+            tv3.text = password
+            tv3.gravity = Gravity.CENTER_HORIZONTAL
+            tv3.setPadding(15,15,15,15)
+            tblRow.addView(tv3)
+
+            tableLayout.addView(tblRow)
+
         }
     }
 }

@@ -13,7 +13,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     val table1Name = "Login" //Name of table 1
-    val table2Name = "Saves" //Name of table 2
+    private val table2Name = "Saves" //Name of table 2
 
     private val table1Create =
         "CREATE TABLE $table1Name (ID INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT, Password TEXT)" //SQL Statement to create Table 1
@@ -42,7 +42,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val db = this.readableDatabase
 
-        return db.rawQuery("SELECT * FROM $table2Name WHERE ID LIKE $UserNumber GROUP BY Website", null)
+        return db.rawQuery("SELECT * FROM $table2Name WHERE User LIKE $UserNumber GROUP BY Website", null)
     }
 
     fun insertLogin(Username: String, Password: String): Long {
