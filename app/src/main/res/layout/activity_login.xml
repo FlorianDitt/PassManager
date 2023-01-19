@@ -56,11 +56,15 @@
     <Button
         android:id="@+id/signUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/submit"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="100dp"
         android:background="@color/transparent"
-        android:text="Sine up"
+        android:gravity="center|bottom"
+        android:text="Sign up"
         android:textColor="@color/blue" />
 
 </RelativeLayout>
