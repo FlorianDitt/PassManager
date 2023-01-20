@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 
-class addPasswordActivity : AppCompatActivity() {
+class AddPasswordActivity : AppCompatActivity() {
 
     private var userID : String = ""//Get user id from MainActivity
 

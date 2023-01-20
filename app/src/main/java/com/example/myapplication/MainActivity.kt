@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val toAddButton : Button = findViewById(R.id.toAddButton)
 
         toAddButton.setOnClickListener {
-            val intent = Intent(this,addPasswordActivity::class.java)//Declare target Activity
+            val intent = Intent(this,AddPasswordActivity::class.java)//Declare target Activity
             intent.putExtra("UserID", userID)//add userID to new Activity
             startActivity(intent)//change to Activity to add Password
         }

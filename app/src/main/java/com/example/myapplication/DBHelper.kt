@@ -6,8 +6,8 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-const val DATABASE_NAME = "PassManager.db" //Name of the Database
-const val DATABASE_VERSION = 2 //Version of the Database
+private const val DATABASE_NAME = "PassManager.db" //Name of the Database
+private const val DATABASE_VERSION = 2 //Version of the Database
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
