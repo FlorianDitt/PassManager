@@ -51,22 +51,26 @@ class MainActivity : AppCompatActivity() {
 
             val tableLayout : TableLayout = findViewById(R.id.Table)//Get Table layout
             val tblRow = TableRow(this)
+            val width = findViewById<TextView>(R.id.WebsiteColumn).width
 
             val tv1 = TextView(this)
             tv1.text = website
             tv1.gravity = Gravity.CENTER_VERTICAL
+            tv1.width = width
             tv1.setPadding(15,15,15,15)
             tblRow.addView(tv1)
 
             val tv2 = TextView(this)
             tv2.text = username
             tv2.gravity = Gravity.CENTER_HORIZONTAL
+            tv2.width = width
             tv2.setPadding(15,15,15,15)
             tblRow.addView(tv2)
 
             val tv3 = TextView(this)
             tv3.text = password
             tv3.gravity = Gravity.CENTER_HORIZONTAL
+            tv3.width = width
             tv3.setPadding(15,15,15,15)
             tblRow.addView(tv3)
 
