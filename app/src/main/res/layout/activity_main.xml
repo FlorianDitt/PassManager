@@ -7,50 +7,84 @@
     android:background="@color/Background"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/toAddButton"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-15dp"
+        android:layout_height="55dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/displayUsername"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageButton
+        android:id="@+id/toAddButton"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:background="@color/transparent"
-        android:text="+"
+        android:scaleType="fitCenter"
+        android:src="@drawable/plusicon"
         android:textSize="40sp" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/edit"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp">
+
         <TableLayout
             android:id="@+id/Table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="*">
+            android:stretchColumns="0,1,2">
+
             <TableRow
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:background="@color/Dark_gray"
+                android:orientation="vertical"
                 tools:ignore="UselessParent">
+
                 <TextView
+                    android:id="@+id/WebsiteColumn"
                     android:layout_width="wrap_content"
                     android:gravity="center"
-                    android:padding="10dp"
                     android:text="Website"
-                    android:textColor="@color/white"
-                    />
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:gravity="center"
-                    android:padding="10dp"
                     android:text="Username"
-                    android:textColor="@color/white"
-                    />
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:gravity="center"
-                    android:padding="10dp"
                     android:text="Password"
-                    android:textColor="@color/white"
-                    />
+                    android:textColor="@color/white" />
+                <ImageButton
+                    android:id="@+id/deleteButton"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@color/transparent"
+                    android:src="@drawable/delete"
+                    android:scaleType="fitCenter" />
             </TableRow>
         </TableLayout>
     </ScrollView>

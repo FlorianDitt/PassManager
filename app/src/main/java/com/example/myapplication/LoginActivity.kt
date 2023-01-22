@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
                if (passwordInput.text.toString() == checkPassword.elementAt(i) && usernameInput.text.toString() == checkUsername.elementAt(i)){//check username and password
                    val intent = Intent(this,MainActivity::class.java)
                    intent.putExtra("UserID", iD.elementAt(i).toString())
+                   intent.putExtra("Username", checkUsername.elementAt(i).toString())
                    startActivity(intent)//change Activity
                    usernameInput.setText("")
                    passwordInput.setText("")
