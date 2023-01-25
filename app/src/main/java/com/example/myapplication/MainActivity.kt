@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
             val tv1 = TextView(this)
             tv1.text = website
-            tv1.gravity = Gravity.CENTER_VERTICAL
+            tv1.gravity = Gravity.CENTER_HORIZONTAL
             tv1.width = width
             tv1.setPadding(15,15,15,15)
             tblRow.addView(tv1)
@@ -89,7 +89,41 @@ class MainActivity : AppCompatActivity() {
             ib.setBackgroundColor(Color.TRANSPARENT)
             ib.scaleType = ImageView.ScaleType.FIT_CENTER
             ib.setOnClickListener {
-                showDel = !showDel
+                val popup = PopupMenu(this, ib)
+                popup.inflate(R.menu.popup_menu)
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.menu_yes -> {
+                            showDel = !showDel
+                            for (i in tableLength.indices) {
+                                findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
+                            }
+                            val isDataDel:Boolean  = DBHelper(this, null).delData(dataID.toInt())
+                            if (isDataDel){
+                                Toast.makeText(this, "Entry Deleted", Toast.LENGTH_SHORT).show()
+                            }else{
+                                Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
+                            }
+                            finish()
+                            overridePendingTransition( 0, 0)
+                            startActivity(intent)
+                            overridePendingTransition( 0, 0)
+                            true
+                        }
+                        R.id.menu_no -> {
+                            Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
+                            showDel = !showDel
+                            for (i in tableLength.indices) {
+                                findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
+                            }
+                            true
+                        }
+                        else -> false
+                    }
+                }
+                popup.show()
+            }
+                /*showDel = !showDel
                 for (i in tableLength.indices) {
                     findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
                 }
@@ -103,8 +137,7 @@ class MainActivity : AppCompatActivity() {
                 overridePendingTransition( 0, 0)
                 startActivity(intent)
                 overridePendingTransition( 0, 0)
-
-            }
+            */
             tblRow.addView(ib)
 
             tableLayout.addView(tblRow)

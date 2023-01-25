@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PassManager</string>
+    <string name="areYouSureYouWantToDeleteThisValue">Willst du diesen eintrag wirklich löschen</string>
+    <string name="button_title">test</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
 </resources>
