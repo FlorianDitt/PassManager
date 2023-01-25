@@ -66,4 +66,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         return db.insert(table2Name, null, contentValues)
     }
+    fun delData(id:Int): Boolean{
+        val db = this.writableDatabase
+        return db.delete(table2Name, "ID = $id", null) > 0
+    }
 }
