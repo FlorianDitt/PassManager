@@ -122,6 +122,7 @@ class MainActivity : AppCompatActivity() {
             tblRow.addView(tv3)
 
             val ib = ImageButton(this)
+            ib.layoutParams = findViewById<ImageButton>(R.id.deleteButton).layoutParams
             ib.id = generateViewId()
             tableLength += ib.id
             ib.visibility = INVISIBLE
