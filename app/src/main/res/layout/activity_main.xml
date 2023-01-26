@@ -20,26 +20,15 @@
 
     <ImageButton
         android:id="@+id/toAddButton"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
         android:background="@color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/plusicon"
+        android:layout_alignParentRight="true"
         android:textSize="40sp" />
-
-    <ImageButton
-        android:id="@+id/editButton"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/edit"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/transparent"
-        android:scaleType="fitCenter"/>
 
     <ScrollView
         android:layout_width="match_parent"

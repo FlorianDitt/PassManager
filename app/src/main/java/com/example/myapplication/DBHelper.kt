@@ -42,7 +42,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val db = this.readableDatabase
 
-        return db.rawQuery("SELECT * FROM $table2Name WHERE User LIKE $UserNumber GROUP BY Website", null)
+        return db.rawQuery("SELECT * FROM $table2Name WHERE User LIKE $UserNumber ORDER BY Website", null)
     }
 
     fun insertLogin(Username: String, Password: String): Long {
@@ -65,6 +65,15 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         contentValues.put("Password", Password )
 
         return db.insert(table2Name, null, contentValues)
+    }
+
+    fun updateData(ID: Int, Website: String, Username: String, Password: String) {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+        cv.put("Website", Website)
+        cv.put("Username", Username)
+        cv.put("Password", Password)
+        db.update(table2Name, cv , "ID = $ID", null)
     }
     fun delData(id:Int): Boolean{
         val db = this.writableDatabase
