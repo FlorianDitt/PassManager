@@ -19,8 +19,10 @@ class LoginActivity : AppCompatActivity() {
         val passwordInput = findViewById<EditText>(R.id.password)//Input field of password
         val submitInput = findViewById<Button>(R.id.submit)//Submit Button
         val signUpInput = findViewById<Button>(R.id.signUp)//Sign up Button
+        var passwordCheck = false
 
         submitInput.setOnClickListener {//what happens when Submit button is clicked
+            passwordCheck = false
             getUserinfo()
 
            for (i in 1 until checkUsername.size){
@@ -31,14 +33,19 @@ class LoginActivity : AppCompatActivity() {
                    startActivity(intent)//change Activity
                    usernameInput.setText("")
                    passwordInput.setText("")
+                   passwordCheck = true
                }
            }
+            if (!passwordCheck){
+                Toast.makeText(this, "Wrong Username or Password", Toast.LENGTH_SHORT).show()
+            }
 
        }
        signUpInput.setOnClickListener {//what happens when Sign Up button is clicked
            startActivity(Intent(this,SignUpActivity::class.java))
        }
-   }
+    }
+
     private fun getUserinfo(){
 
         val db = DBHelper(this, null)//Connection to Database
