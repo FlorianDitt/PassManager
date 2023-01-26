@@ -35,7 +35,7 @@ class EditActivity : AppCompatActivity() {
         val editPassword =findViewById<EditText>(R.id.editPassword)
 
         editWebsite.setText(website)
-        editUsername.setText(username)
+        editUsername.setText(savedUsername)
         editPassword.setText(password)
 
 
