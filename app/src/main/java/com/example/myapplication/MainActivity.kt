@@ -1,16 +1,13 @@
 package com.example.myapplication
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.graphics.Color
 import android.os.Bundle
-import android.text.InputType
 import android.view.Gravity
 import android.view.View.INVISIBLE
 import android.view.View.generateViewId
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 
@@ -68,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             tv1.text = website
             tv1.gravity = Gravity.CENTER_HORIZONTAL
             tv1.width = width
-            tv1.setPadding(15,15,15,15)
+            tv1.setPadding(15,20,15,15)
             tv1.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -84,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             tv2.text = username
             tv2.gravity = Gravity.CENTER_HORIZONTAL
             tv2.width = width
-            tv2.setPadding(15,15,15,15)
+            tv2.setPadding(15,20,15,15)
             tv2.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -106,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             tv3.text = password
             tv3.gravity = Gravity.CENTER_HORIZONTAL
             tv3.width = width
-            tv3.setPadding(15,15,15,15)
+            tv3.setPadding(15,20,15,15)
             tv3.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -128,43 +125,40 @@ class MainActivity : AppCompatActivity() {
             ib.id = generateViewId()
             tableLength += ib.id
             ib.visibility = INVISIBLE
+            ib.setPadding(0,20,0,0)
             ib.setImageResource(R.drawable.delete)
             ib.setBackgroundColor(Color.TRANSPARENT)
             ib.scaleType = ImageView.ScaleType.FIT_CENTER
             ib.setOnClickListener {
-                val popup = PopupMenu(this, ib)
-                popup.inflate(R.menu.popup_menu)
-                popup.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.menu_yes -> {
-                            showDel = !showDel
-                            for (i in tableLength.indices) {
-                                findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
-                            }
-                            val isDataDel:Boolean  = DBHelper(this, null).delData(dataID.toInt())
-                            if (isDataDel){
-                                Toast.makeText(this, "Entry Deleted", Toast.LENGTH_SHORT).show()
-                            }else{
-                                Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
-                            }
-                            finish()
-                            overridePendingTransition( 0, 0)
-                            startActivity(intent)
-                            overridePendingTransition( 0, 0)
-                            true
-                        }
-                        R.id.menu_no -> {
-                            Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
-                            showDel = !showDel
-                            for (i in tableLength.indices) {
-                                findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
-                            }
-                            true
-                        }
-                        else -> false
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder.setMessage("You Want to delete that")
+                dialogBuilder.setPositiveButton("JA"
+                ) { _, _ ->
+                    showDel = !showDel
+                    for (i in tableLength.indices) {
+                        findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
+                    }
+                    val isDataDel: Boolean = DBHelper(this, null).delData(dataID.toInt())
+                    if (isDataDel) {
+                        Toast.makeText(this, "Entry Deleted", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
+                    }
+                    finish()
+                    overridePendingTransition(0, 0)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                }
+                dialogBuilder.setNegativeButton("Nein"
+                ) { _, _ ->
+                    Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
+                    showDel = !showDel
+                    for (i in tableLength.indices) {
+                        findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
                     }
                 }
-                popup.show()
+                val b = dialogBuilder.create()
+                b.show()
             }
             tblRow.addView(ib)
 
