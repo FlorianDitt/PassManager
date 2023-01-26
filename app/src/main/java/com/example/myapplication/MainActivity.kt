@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
             val tv1 = TextView(this)
             tv1.text = website
-            tv1.gravity = Gravity.CENTER_VERTICAL
+            tv1.gravity = Gravity.CENTER_HORIZONTAL
             tv1.width = width
             tv1.setPadding(15,15,15,15)
             tblRow.addView(tv1)
