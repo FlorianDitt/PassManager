@@ -1,8 +1,12 @@
 package com.example.myapplication
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.InputType
 import android.view.Gravity
 import android.view.View.INVISIBLE
 import android.view.View.generateViewId
@@ -65,6 +69,15 @@ class MainActivity : AppCompatActivity() {
             tv1.gravity = Gravity.CENTER_HORIZONTAL
             tv1.width = width
             tv1.setPadding(15,15,15,15)
+            tv1.setOnLongClickListener {
+                val intent = Intent(this,EditActivity::class.java)
+                intent.putExtra("PasswordID", dataID)
+                intent.putExtra("Website", website)
+                intent.putExtra("savedUsername", username)
+                intent.putExtra("Password", password)
+                startActivity(intent)//change Activity
+                true
+            }
             tblRow.addView(tv1)
 
             val tv2 = TextView(this)
@@ -72,6 +85,21 @@ class MainActivity : AppCompatActivity() {
             tv2.gravity = Gravity.CENTER_HORIZONTAL
             tv2.width = width
             tv2.setPadding(15,15,15,15)
+            tv2.setOnLongClickListener {
+                val intent = Intent(this,EditActivity::class.java)
+                intent.putExtra("PasswordID", dataID)
+                intent.putExtra("Website", website)
+                intent.putExtra("savedUsername", username)
+                intent.putExtra("Password", password)
+                startActivity(intent)//change Activity
+                true
+            }
+            tv2.setOnClickListener {
+                val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipData = ClipData.newPlainText("text", tv2.text)
+                clipboardManager.setPrimaryClip(clipData)
+                Toast.makeText(this, "Copied: ${tv2.text}", Toast.LENGTH_SHORT).show()
+            }
             tblRow.addView(tv2)
 
             val tv3 = TextView(this)
@@ -79,6 +107,21 @@ class MainActivity : AppCompatActivity() {
             tv3.gravity = Gravity.CENTER_HORIZONTAL
             tv3.width = width
             tv3.setPadding(15,15,15,15)
+            tv3.setOnLongClickListener {
+                val intent = Intent(this,EditActivity::class.java)
+                intent.putExtra("PasswordID", dataID)
+                intent.putExtra("Website", website)
+                intent.putExtra("savedUsername", username)
+                intent.putExtra("Password", password)
+                startActivity(intent)//change Activity
+                true
+            }
+            tv3.setOnClickListener {
+                val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipData = ClipData.newPlainText("text", tv3.text)
+                clipboardManager.setPrimaryClip(clipData)
+                Toast.makeText(this, "Copied: ${tv3.text}", Toast.LENGTH_SHORT).show()
+            }
             tblRow.addView(tv3)
 
             val ib = ImageButton(this)
@@ -123,21 +166,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 popup.show()
             }
-                /*showDel = !showDel
-                for (i in tableLength.indices) {
-                    findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
-                }
-                val isDataDel:Boolean  = DBHelper(this, null).delData(dataID.toInt())
-                if (isDataDel){
-                    Toast.makeText(this, "Entry Deleted", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(this, "Entry Not Deleted", Toast.LENGTH_SHORT).show()
-                }
-                finish()
-                overridePendingTransition( 0, 0)
-                startActivity(intent)
-                overridePendingTransition( 0, 0)
-            */
             tblRow.addView(ib)
 
             tableLayout.addView(tblRow)
