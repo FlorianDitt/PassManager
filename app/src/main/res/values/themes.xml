@@ -21,6 +21,8 @@
     </style>
 
     <style name="EditTextColor">
+        <item name="android:radius">29dp</item>
+        <item name="background">@color/Very_dark_gray_mostly_black</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:backgroundTint">@color/white</item>
     </style>

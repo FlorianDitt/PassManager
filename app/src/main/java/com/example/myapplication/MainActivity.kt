@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             tv1.text = website
             tv1.gravity = Gravity.CENTER_HORIZONTAL
             tv1.width = width
-            tv1.setPadding(15,20,15,15)
+            tv1.setPadding(15,0,15,15)
             tv1.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             tv2.text = username
             tv2.gravity = Gravity.CENTER_HORIZONTAL
             tv2.width = width
-            tv2.setPadding(15,20,15,15)
+            tv2.setPadding(15,0,15,15)
             tv2.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             tv3.text = password
             tv3.gravity = Gravity.CENTER_HORIZONTAL
             tv3.width = width
-            tv3.setPadding(15,20,15,15)
+            tv3.setPadding(15,0,15,15)
             tv3.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -122,14 +122,15 @@ class MainActivity : AppCompatActivity() {
             tblRow.addView(tv3)
 
             val ib = ImageButton(this)
-            ib.layoutParams = findViewById<ImageButton>(R.id.deleteButton).layoutParams
+            val params = findViewById<ImageButton>(R.id.deleteButton).layoutParams
+            ib.layoutParams = params
             ib.id = generateViewId()
             tableLength += ib.id
             ib.visibility = INVISIBLE
-            ib.setPadding(0,20,0,0)
+            ib.setPadding(0,0,0,0)
             ib.setImageResource(R.drawable.delete)
             ib.setBackgroundColor(Color.TRANSPARENT)
-            ib.scaleType = ImageView.ScaleType.FIT_CENTER
+            //ib.scaleType = ImageView.ScaleType.FIT_CENTER
             ib.setOnClickListener {
                 val dialogBuilder = AlertDialog.Builder(this)
                 dialogBuilder.setMessage("You Want to delete that")
