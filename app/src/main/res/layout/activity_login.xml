@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@drawable/background">
-    
+    android:background="@color/Background">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="60dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
-        android:layout_marginTop="110dp"
-        android:textColor="@color/white"/>
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="60dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:layout_above="@+id/password"
@@ -51,7 +51,7 @@
         android:layout_above="@+id/signUp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="80dp"
         android:text="Submit" />
 
     <Button
