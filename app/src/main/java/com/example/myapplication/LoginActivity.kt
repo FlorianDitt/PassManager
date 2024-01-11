@@ -24,8 +24,12 @@ class LoginActivity : AppCompatActivity() {
         submitInput.setOnClickListener {//what happens when Submit button is clicked
             passwordCheck = false
             getUserinfo()
+            println(checkUsername.size)
+            println(iD.size)
+            println(checkUsername.elementAt(0))
+            println(iD.elementAt(0))
 
-           for (i in 1 until checkUsername.size){
+           for (i in checkUsername.indices){
                if (passwordInput.text.toString() == checkPassword.elementAt(i) && usernameInput.text.toString() == checkUsername.elementAt(i)){//check username and password
                    val intent = Intent(this,MainActivity::class.java)
                    intent.putExtra("UserID", iD.elementAt(i).toString())
@@ -56,9 +60,16 @@ class LoginActivity : AppCompatActivity() {
             val id = res.getString(0)
             val username = res.getString(1)
             val password = res.getString(2)
-            checkUsername += username//store usernames to Array
-            checkPassword += password//store password to Array
-            iD += id
+            if(!(username in checkUsername)) {
+                checkUsername += username//store usernames to Array
+            }
+            if (!(password in checkPassword)){
+                checkPassword += password//store password to Array
+            }
+            if (!(id in iD)){
+                iD += id//store id to Array
+            }
+
         }
     }
 
