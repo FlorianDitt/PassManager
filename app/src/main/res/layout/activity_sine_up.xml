@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Background"
+    android:background="@color/Theme1"
     tools:context=".SignUpActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_marginTop="70dp"
         android:gravity="center"
         android:text="Sign up"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="50dp" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -25,7 +25,7 @@
         android:layout_marginRight="20dp"
         android:hint="Username"
         android:inputType="text"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="20dp"
         android:theme="@style/EditTextColor" />
 
@@ -39,7 +39,7 @@
         android:layout_marginRight="20dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="20dp"
         android:theme="@style/EditTextColor"/>
         <!---->
@@ -54,7 +54,7 @@
         android:layout_marginRight="20dp"
         android:hint="Repeat Password"
         android:inputType="textPassword"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="20dp"
         android:theme="@style/EditTextColor" />
 ba

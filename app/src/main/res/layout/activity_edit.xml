@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Background"
+    android:background="@color/Theme1"
     tools:context=".EditActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_marginRight="20dp"
         android:gravity="center"
         android:text="Edit"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="40dp" />
 
     <com.google.android.material.textfield.TextInputEditText
