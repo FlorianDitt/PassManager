@@ -24,10 +24,6 @@ class LoginActivity : AppCompatActivity() {
         submitInput.setOnClickListener {//what happens when Submit button is clicked
             passwordCheck = false
             getUserinfo()
-            println(checkUsername.size)
-            println(iD.size)
-            println(checkUsername.elementAt(0))
-            println(iD.elementAt(0))
 
            for (i in checkUsername.indices){
                if (passwordInput.text.toString() == checkPassword.elementAt(i) && usernameInput.text.toString() == checkUsername.elementAt(i)){//check username and password
