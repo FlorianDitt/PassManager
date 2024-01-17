@@ -2,9 +2,11 @@ package com.example.myapplication
 
 import android.content.*
 import android.graphics.Color
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.View.generateViewId
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -39,9 +41,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         delButton.setOnClickListener {
+            println("2")
             showDel = !showDel
             for (i in tableLength.indices) {
-                findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
+                val btn = findViewById<ImageButton>(tableLength.elementAt(i))
+                if (showDel){
+                    println("1")
+                    println(btn.visibility)
+                    btn.visibility = VISIBLE
+                }else{
+                    println("0")
+                    btn.visibility = INVISIBLE
+                }
             }
         }
         createTable()
@@ -52,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         val res = db.getSpecialData(userID.toInt())//Get data from Database
 
         while(res!!.moveToNext()) {//Store data from Database
+            val i = res.position
             val dataID = res.getString(0)
             val website = res.getString(2)
             val username = res.getString(3)
@@ -59,13 +71,16 @@ class MainActivity : AppCompatActivity() {
 
             val tableLayout : TableLayout = findViewById(R.id.Table)//Get Table layout
             val tblRow = TableRow(this)
+            if((i+1)%2 == 0){
+                tblRow.setBackgroundColor(resources.getColor(R.color.Theme2))
+            }
             val width = findViewById<TextView>(R.id.WebsiteColumn).width
 
             val tv1 = TextView(this)
             tv1.text = website
-            tv1.gravity = Gravity.CENTER_HORIZONTAL
+            tv1.gravity = Gravity.CENTER
             tv1.width = width
-            tv1.setPadding(15,0,15,15)
+            tv1.setPadding(15,15,15,15)
             tv1.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -122,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             tblRow.addView(tv3)
 
             val ib = ImageButton(this)
-            val params = findViewById<ImageButton>(R.id.deleteButton).layoutParams
+            val params = findViewById<ImageButton>(R.id.delbtnstyle).layoutParams
             ib.layoutParams = params
             ib.id = generateViewId()
             tableLength += ib.id
@@ -130,12 +145,13 @@ class MainActivity : AppCompatActivity() {
             ib.setPadding(0,0,0,0)
             ib.setImageResource(R.drawable.delete)
             ib.setBackgroundColor(Color.TRANSPARENT)
-            //ib.scaleType = ImageView.ScaleType.FIT_CENTER
+            ib.scaleType = ImageView.ScaleType.FIT_CENTER
             ib.setOnClickListener {
                 val dialogBuilder = AlertDialog.Builder(this)
                 dialogBuilder.setMessage("You Want to delete that")
                 dialogBuilder.setPositiveButton("JA"
                 ) { _, _ ->
+                    println("1")
                     showDel = !showDel
                     for (i in tableLength.indices) {
                         findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel

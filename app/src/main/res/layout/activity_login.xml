@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/Background">
+    android:background="@color/Theme1">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="Login"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="60dp" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -26,7 +26,7 @@
         android:layout_marginRight="20dp"
         android:hint="Username"
         android:inputType="text"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="20dp"
         android:theme="@style/EditTextColor" />
 
@@ -40,7 +40,7 @@
         android:layout_marginRight="20dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/white"
+        android:textColor="@color/Theme5"
         android:textSize="20dp"
         android:theme="@style/EditTextColor" />
 
@@ -65,6 +65,6 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:text="Sign up"
-        android:textColor="@color/blue" />
+        android:textColor="@color/Theme3" />
 
 </RelativeLayout>
