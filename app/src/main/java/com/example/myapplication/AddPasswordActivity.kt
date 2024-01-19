@@ -33,7 +33,6 @@ class AddPasswordActivity : AppCompatActivity() {
                     username,
                     password
                 )
-                println("added")
                 val intent = Intent(this,MainActivity::class.java)//Declare target Activity
                 intent.putExtra("UserID", userID)//add userID to new Activity
                 intent.putExtra("Username", intentUsername)

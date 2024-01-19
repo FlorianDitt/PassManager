@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.View.generateViewId
+import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Use FLAG_SECURE to prevent screenshots
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
         setContentView(R.layout.activity_main)
         if (intent.extras != null){
             userID = intent.getStringExtra("UserID").toString()
@@ -41,16 +47,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         delButton.setOnClickListener {
-            println("2")
             showDel = !showDel
             for (i in tableLength.indices) {
                 val btn = findViewById<ImageButton>(tableLength.elementAt(i))
                 if (showDel){
-                    println("1")
-                    println(btn.visibility)
                     btn.visibility = VISIBLE
                 }else{
-                    println("0")
                     btn.visibility = INVISIBLE
                 }
             }
@@ -151,7 +153,6 @@ class MainActivity : AppCompatActivity() {
                 dialogBuilder.setMessage("You Want to delete that")
                 dialogBuilder.setPositiveButton("JA"
                 ) { _, _ ->
-                    println("1")
                     showDel = !showDel
                     for (i in tableLength.indices) {
                         findViewById<ImageButton>(tableLength.elementAt(i)).isVisible = showDel
