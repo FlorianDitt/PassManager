@@ -28,7 +28,8 @@
         android:inputType="text"
         android:textColor="@color/Theme5"
         android:textSize="20dp"
-        android:theme="@style/EditTextColor" />
+        android:theme="@style/EditTextColor"
+        android:autofillHints="username"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
@@ -42,7 +43,8 @@
         android:inputType="textPassword"
         android:textColor="@color/Theme5"
         android:textSize="20dp"
-        android:theme="@style/EditTextColor" />
+        android:theme="@style/EditTextColor"
+        android:autofillHints="password"/>
 
     <Button
         android:id="@+id/submit"

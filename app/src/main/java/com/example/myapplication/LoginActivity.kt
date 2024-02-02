@@ -1,19 +1,32 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.autofill.AutofillId
 import android.widget.*
+import androidx.annotation.RequiresApi
 
 class LoginActivity : AppCompatActivity() {
 
     private var checkUsername: Array<String> = arrayOf()//Array for every username
     private var checkPassword: Array<String> = arrayOf()//Array for every password
     private var iD: Array<String> = arrayOf()//Array for every user ID
+    public lateinit var usernameField: EditText
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        usernameField = findViewById(R.id.username)
+
+        val usernameAutofillId: AutofillId = usernameField.autofillId
 
         val usernameInput = findViewById<EditText>(R.id.username)//Input field of username
         val passwordInput = findViewById<EditText>(R.id.password)//Input field of password
