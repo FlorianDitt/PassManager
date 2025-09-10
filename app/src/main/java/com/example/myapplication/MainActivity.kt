@@ -1,10 +1,13 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.*
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.Gravity
+import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.View.generateViewId
@@ -12,6 +15,7 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 
 
@@ -60,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         createTable()
     }
 
+    @SuppressLint("RtlHardcoded")
     private fun createTable(){
         val db = DBHelper(this, null)
         val res = db.getSpecialData(userID.toInt())//Get data from Database
@@ -72,17 +77,16 @@ class MainActivity : AppCompatActivity() {
             val password = res.getString(4)
 
             val tableLayout : TableLayout = findViewById(R.id.Table)//Get Table layout
-            val tblRow = TableRow(this)
-            if((i+1)%2 == 0){
-                tblRow.setBackgroundColor(resources.getColor(R.color.Theme2))
-            }
             val width = findViewById<TextView>(R.id.WebsiteColumn).width
+
+            val tblRow = TableRow(this)
+            tblRow.setPadding(20, 0, 20, 0)
 
             val tv1 = TextView(this)
             tv1.text = website
-            tv1.gravity = Gravity.CENTER
+            tv1.gravity = Gravity.LEFT
             tv1.width = width
-            tv1.setPadding(15,15,15,15)
+            tv1.setPadding(15,20,15,20)
             tv1.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -96,9 +100,9 @@ class MainActivity : AppCompatActivity() {
 
             val tv2 = TextView(this)
             tv2.text = username
-            tv2.gravity = Gravity.CENTER_HORIZONTAL
+            tv2.gravity = Gravity.LEFT
             tv2.width = width
-            tv2.setPadding(15,0,15,15)
+            tv2.setPadding(15,20,15,20)
             tv2.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
                 intent.putExtra("PasswordID", dataID)
@@ -118,24 +122,30 @@ class MainActivity : AppCompatActivity() {
 
             val tv3 = TextView(this)
             tv3.text = password
-            tv3.typeface = Typeface.SERIF
-            tv3.gravity = Gravity.CENTER_HORIZONTAL
+            tv3.typeface = Typeface.MONOSPACE
+            tv3.gravity = Gravity.LEFT
             tv3.width = width
-            tv3.setPadding(15,0,15,15)
+            tv3.setPadding(15,20,15,20)
+            // Start with password hidden
+            tv3.transformationMethod = PasswordTransformationMethod.getInstance()
             tv3.setOnLongClickListener {
-                val intent = Intent(this,EditActivity::class.java)
-                intent.putExtra("PasswordID", dataID)
-                intent.putExtra("Website", website)
-                intent.putExtra("savedUsername", username)
-                intent.putExtra("Password", password)
-                startActivity(intent)//change Activity
-                true
-            }
-            tv3.setOnClickListener {
                 val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", tv3.text)
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(this, "Copied: ${tv3.text}", Toast.LENGTH_SHORT).show()
+                if (tv3.transformationMethod == PasswordTransformationMethod.getInstance()) {
+                    Toast.makeText(this, "Copied password for: ${tv2.text}", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Copied: ${tv3.text}", Toast.LENGTH_SHORT).show()
+                }
+                true
+            }
+            tv3.setOnClickListener {
+                // Toggle visibility
+                if (tv3.transformationMethod == PasswordTransformationMethod.getInstance()) {
+                    tv3.transformationMethod = null // Show text
+                } else {
+                    tv3.transformationMethod = PasswordTransformationMethod.getInstance() // Hide text
+                }
             }
             tblRow.addView(tv3)
 
@@ -184,6 +194,14 @@ class MainActivity : AppCompatActivity() {
 
             tableLayout.addView(tblRow)
 
+            val divider = View(this)
+            val dividerParams = TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                1
+            )
+            divider.layoutParams = dividerParams
+            divider.setBackgroundColor(ContextCompat.getColor(this, R.color.Dark_gray)) // Definieren Sie your_divider_color in colors.xml
+            tableLayout.addView(divider)
         }
     }
 }

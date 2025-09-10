@@ -72,6 +72,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="15dp"
             android:background="@color/transparent"
+            android:contentDescription="@string/delete_button"
             android:scaleType="fitCenter"
             android:src="@drawable/delete" />
     </TableRow>
