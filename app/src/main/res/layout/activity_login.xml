@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,9 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:gravity="center"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/Theme5"
-        android:textSize="60dp" />
+        android:textSize="60sp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:layout_above="@+id/password"
@@ -23,10 +24,10 @@
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="text"
         android:textColor="@color/Theme5"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:theme="@style/EditTextColor" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -37,10 +38,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="30dp"
         android:layout_marginRight="20dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/Theme5"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:theme="@style/EditTextColor" />
 
     <RelativeLayout
@@ -58,15 +59,17 @@
             android:layout_height="wrap_content"
             android:textColor="@color/Theme5"
             android:layout_toStartOf="@id/bio_login"
-            android:text="Submit" />
+            android:text="@string/submit" />
 
         <ImageButton
             android:id="@+id/bio_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="46dp"
             android:layout_alignParentEnd="true"
-            android:backgroundTint="@color/transparent"
-            android:src="@drawable/fingerprint"/>
+            android:background="@color/transparent"
+            android:contentDescription="@string/bio_login"
+            android:src="@drawable/fingerprint"
+            app:tint="@color/Theme5" />
     </RelativeLayout>
 
 
@@ -81,7 +84,7 @@
         android:background="@color/transparent"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:text="Sign up"
+        android:text="@string/sign_up"
         android:textColor="@color/Theme5" />
 
 </RelativeLayout>

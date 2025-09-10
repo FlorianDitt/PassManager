@@ -2,7 +2,7 @@ package com.example.myapplication
 
 import android.content.*
 import android.graphics.Color
-import android.opengl.Visibility
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View.INVISIBLE
@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
 
             val tv3 = TextView(this)
             tv3.text = password
+            tv3.typeface = Typeface.SERIF
             tv3.gravity = Gravity.CENTER_HORIZONTAL
             tv3.width = width
             tv3.setPadding(15,0,15,15)

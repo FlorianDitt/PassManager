@@ -3,4 +3,10 @@
     <string name="areYouSureYouWantToDeleteThisValue">Willst du diesen eintrag wirklich löschen</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+    <string name="bio_login">BIO Login</string>
+    <string name="submit">Submit</string>
+    <string name="sign_up">Sign up</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
 </resources>
