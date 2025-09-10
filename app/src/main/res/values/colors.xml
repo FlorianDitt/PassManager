@@ -18,8 +18,9 @@
     <color name="transparent">#000D0D0D</color>
     <color name="Green">#002700</color>
     <color name="Theme1">#0D0D0D</color>
-    <color name="Theme2">#8C0327</color>
-    <color name="Theme3">#8D7267</color>
-    <color name="Theme4">#BF9C88</color>
-    <color name="Theme5">#F2BC8E</color>
+    <color name="Theme2">#35010F</color>
+    <color name="Theme2a">#400112</color>
+    <color name="Theme3">#8D0328</color>
+    <color name="Theme4">#C70438</color>
+    <color name="Theme5">#FFFFFF</color>
 </resources>
