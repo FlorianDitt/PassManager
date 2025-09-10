@@ -9,4 +9,10 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="login">Login</string>
+    <string name="edit">Edit</string>
+    <string name="website">Website</string>
+    <string name="add_new_password">Add new Password</string>
+    <string name="generate">Generate</string>
+    <string name="number_of_positions">Number of positions</string>
+    <string name="repeat_password">Repeat Password</string>
 </resources>

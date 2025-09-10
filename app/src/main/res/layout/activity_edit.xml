@@ -14,9 +14,9 @@
         android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Edit"
+        android:text="@string/edit"
         android:textColor="@color/Theme5"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editWebsite"
@@ -26,7 +26,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="60dp"
-        android:hint="Website"
+        android:hint="@string/website"
         android:theme="@style/EditTextColor" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -37,7 +37,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="60dp"
-        android:hint="Username"
+        android:hint="@string/username"
         android:theme="@style/EditTextColor" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -48,7 +48,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="60dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:theme="@style/EditTextColor" />
 
     <Button
@@ -59,6 +59,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Submit" />
+        android:text="@string/submit" />
 
 </RelativeLayout>

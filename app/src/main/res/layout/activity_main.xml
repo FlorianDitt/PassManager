@@ -27,7 +27,7 @@
         android:background="@color/Theme1"
         android:scaleType="fitCenter"
         android:src="@drawable/plusicon"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:textSize="40sp" />
 
     <TableLayout
@@ -51,19 +51,19 @@
             android:id="@+id/WebsiteColumn"
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:text="Website"
+            android:text="@string/website"
             android:textColor="@color/Theme5" />
 
         <TextView
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="@color/Theme5" />
 
         <TextView
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:text="Password"
+            android:text="@string/password"
             android:textColor="@color/Theme5" />
 
         <ImageButton
