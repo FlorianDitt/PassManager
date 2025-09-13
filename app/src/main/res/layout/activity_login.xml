@@ -7,72 +7,90 @@
     tools:context=".LoginActivity"
     android:background="@color/Theme1">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:text="@string/login"
-        android:textColor="@color/Theme5"
-        android:textSize="60sp" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_above="@+id/password"
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:hint="@string/username"
-        android:inputType="text"
-        android:textColor="@color/Theme5"
-        android:textSize="20sp"
-        android:theme="@style/EditTextColor" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_above="@+id/loginLayout"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="20dp"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColor="@color/Theme5"
-        android:textSize="20sp"
-        android:theme="@style/EditTextColor" />
-
     <RelativeLayout
-        android:id="@+id/loginLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/signUp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="80dp">
+        android:background="@drawable/panel"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_centerVertical="true">
 
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="fill_parent"
+        <RelativeLayout
+            android:id="@id/loginLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/Theme5"
-            android:layout_toStartOf="@id/bio_login"
-            android:text="@string/submit" />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp">
+            <TextView
+                android:id="@+id/Login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/Theme5"
+                android:textSize="60sp" />
 
-        <ImageButton
-            android:id="@+id/bio_login"
-            android:layout_width="40dp"
-            android:layout_height="46dp"
-            android:layout_alignParentEnd="true"
-            android:background="@color/transparent"
-            android:contentDescription="@string/bio_login"
-            android:src="@drawable/fingerprint"
-            app:tint="@color/Theme5" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/Login_text"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/username"
+                android:inputType="text"
+                android:textColor="@color/Theme5"
+                android:textSize="20sp"
+                android:theme="@style/EditTextColor" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/username"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="@color/Theme5"
+                android:textSize="20sp"
+                android:theme="@style/EditTextColor" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/loginBtnLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginLayout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Theme5"
+                android:layout_toStartOf="@id/bio_login"
+                android:text="@string/submit" />
+
+            <ImageButton
+                android:id="@+id/bio_login"
+                android:layout_width="40dp"
+                android:layout_height="46dp"
+                android:layout_alignParentEnd="true"
+                android:background="@color/transparent"
+                android:contentDescription="@string/bio_login"
+                android:src="@drawable/fingerprint"
+                app:tint="@color/Theme5" />
+        </RelativeLayout>
+
     </RelativeLayout>
-
-
 
     <Button
         android:id="@+id/signUp"
