@@ -6,8 +6,6 @@
             <gradient android:startColor="@color/Panel_Background"
                 android:endColor="@color/Panel_Background"
                 android:angle="135" />
-            <corners android:radius="2dp" />
-            <stroke android:width="10dp" android:color="@color/transparent"/>
             <corners android:radius="16dp"/>
         </shape>
     </item>

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Theme1"
+    android:background="@color/Background"
     tools:context=".MainActivity">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/displayUsername"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
@@ -114,5 +114,135 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/delete" />
         </TableRow>
-    </TableLayout>
+    </TableLayout>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/nav">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/panel">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="test"
+                        android:textColor="@color/Theme5"
+                        android:textSize="30sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="test"
+                            android:textColor="@color/Theme5"
+                            android:textSize="20sp" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@color/transparent"
+                            android:contentDescription="Copy"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/copy"
+                            android:textSize="40sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="test"
+                            android:textColor="@color/Theme5"
+                            android:textSize="20sp" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageButton
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@color/transparent"
+                                android:contentDescription="Copy"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/show"
+                                android:textSize="40sp" />
+                            <ImageButton
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@color/transparent"
+                                android:contentDescription="Copy"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/copy"
+                                android:textSize="40sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </TableLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp">
+        <Button
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:padding="0dp"
+            android:background="@color/transparent"
+            android:text="@string/logout"
+            android:textColor="@color/Theme5"
+            tools:ignore="RelativeOverlap" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
+            <ImageButton
+                android:id="@+id/searchBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/search_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/search"
+                android:textSize="40sp" />
+            <ImageButton
+                android:id="@+id/addBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toEndOf="@id/searchBtn"
+                android:background="@color/transparent"
+                android:contentDescription="@string/add_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/add"
+                android:textSize="40sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </RelativeLayout>
