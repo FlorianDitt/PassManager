@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity() {
             val password = res.getString(4)
 
             val tableLayout : TableLayout = findViewById(R.id.Table)//Get Table layout
-            val width = findViewById<TextView>(R.id.WebsiteColumn).width
 
             val tblRow = TableRow(this)
             tblRow.setPadding(20, 0, 20, 0)
@@ -85,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             val tv1 = TextView(this)
             tv1.text = website
             tv1.gravity = Gravity.LEFT
-            tv1.width = width
+            tv1.width = findViewById<TextView>(R.id.WebsiteColumn).width
             tv1.setPadding(15,20,15,20)
             tv1.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
@@ -101,7 +100,7 @@ class MainActivity : AppCompatActivity() {
             val tv2 = TextView(this)
             tv2.text = username
             tv2.gravity = Gravity.LEFT
-            tv2.width = width
+            tv2.width = findViewById<TextView>(R.id.UsernameColumn).width
             tv2.setPadding(15,20,15,20)
             tv2.setOnLongClickListener {
                 val intent = Intent(this,EditActivity::class.java)
@@ -124,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             tv3.text = password
             tv3.typeface = Typeface.MONOSPACE
             tv3.gravity = Gravity.LEFT
-            tv3.width = width
+            tv3.width = findViewById<TextView>(R.id.PasswordColumn).width
             tv3.setPadding(15,20,15,20)
             // Start with password hidden
             tv3.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -133,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                 val clipData = ClipData.newPlainText("text", tv3.text)
                 clipboardManager.setPrimaryClip(clipData)
                 if (tv3.transformationMethod == PasswordTransformationMethod.getInstance()) {
-                    Toast.makeText(this, "Copied password for: ${tv2.text}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Copied password for: ${tv1.text}", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Copied: ${tv3.text}", Toast.LENGTH_SHORT).show()
                 }
@@ -149,14 +148,17 @@ class MainActivity : AppCompatActivity() {
             }
             tblRow.addView(tv3)
 
+            val relativeLayout = RelativeLayout(this)
+
             val ib = ImageButton(this)
             val params = findViewById<ImageButton>(R.id.delbtnstyle).layoutParams
             ib.layoutParams = params
+            ib.maxWidth = 40
             ib.id = generateViewId()
             tableLength += ib.id
             ib.visibility = INVISIBLE
             ib.setPadding(0,0,0,0)
-            ib.setImageResource(R.drawable.delete)
+            ib.setImageResource(R.drawable.delete1)
             ib.setBackgroundColor(Color.TRANSPARENT)
             ib.scaleType = ImageView.ScaleType.FIT_CENTER
             ib.setOnClickListener {
@@ -190,6 +192,7 @@ class MainActivity : AppCompatActivity() {
                 val b = dialogBuilder.create()
                 b.show()
             }
+            //relativeLayout.addView(ib)
             tblRow.addView(ib)
 
             tableLayout.addView(tblRow)
